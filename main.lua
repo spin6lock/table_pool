@@ -1,3 +1,6 @@
+package.cpath = package.cpath..";./sproto/?.so"
+package.path = package.path..";./sproto/?.lua"
+
 local pool = {}
 local tremove = table.remove
 local tinsert = table.insert
@@ -18,7 +21,7 @@ local function put(tbl, no_need_clear)
     tinsert(pool, tbl)
 end
 
-local function test()
+local function pool_test()
     local tbl = get()
     assert(type(tbl) == "table")
     tbl.a = 1
@@ -26,5 +29,19 @@ local function test()
     put(tbl)
     assert(#pool == 1)
 end
+--pool_test()
 
-test()
+_G.POOL_GET = get
+
+local function testsuite(name)
+    print("========== test_suite:", name)
+    require(name)
+end
+
+testsuite("sproto.test")
+testsuite("sproto.testall")
+testsuite("sproto.test_wire_protocol")
+testsuite("sproto.testcompat")
+testsuite("sproto.testrpc")
+--testsuite("sproto.testweaktype")
+
