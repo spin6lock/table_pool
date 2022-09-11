@@ -35,5 +35,5 @@ jobs:  # workflow中的job
         with:
           context: ./build
           push: true
-          tags: spin6lock/table_pool:latest
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
