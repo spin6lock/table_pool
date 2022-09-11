@@ -1,3 +1,3 @@
 macos:
-	cd sproto && make macosx
+	cd sproto && make
 	lua main.lua
