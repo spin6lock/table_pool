@@ -7,8 +7,9 @@ on:   # 配置触发workflow的事件
       - 'master'
     tags:       # tag更新时触发此workflow
       - '*'
-    paths-ignore:
-      - 'README.md'
+    paths:
+      - 'build/**'
+      - '.github/**'
 
 jobs:  # workflow中的job
 
